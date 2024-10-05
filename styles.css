@@ -1,150 +1,169 @@
 * {
-    box-sizing: border-box; /* Ensures padding and borders are included in total width/height */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Oswald', sans-serif; /* Apply Oswald font for headers */
+    font-family: 'Cinzel', serif; /* New heroic font */
     color: white;
-    text-align: center; /* Center align text */
+    overflow: hidden; /* Prevent scrolling */
 }
 
-/* Background Video Styles */
-.background-video {
+/* Fullscreen overlay before starting the experience */
+.click-overlay {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.start-experience-button {
+    font-size: 2rem;
+    padding: 20px 40px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.start-experience-button:hover {
+    background-color: #388e3c;
+}
+
+/* Hidden by default until the user clicks the start button */
+.hidden {
+    display: none;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background-video {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the entire background */
-    z-index: -1; /* Ensure it is behind other content */
-    filter: brightness(0.6); /* Darken video for better text contrast */
+    object-fit: cover; /* Ensure the video covers the screen */
+    z-index: -1;
 }
 
-/* Play Button Styles */
-.play-button {
+/* Heroic Text Animation */
+.hero-text {
     position: absolute;
-    top: 80%; /* Position the button lower on the screen */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Center the button */
-    background-color: rgba(0, 150, 255, 0.8); /* Semi-transparent background */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem; /* Adjust font size */
+    text-transform: uppercase;
     color: white;
+    opacity: 0; /* Start hidden */
+    text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
+    z-index: 1;
+    animation: fadeIn 2s forwards, scaleUp 2s ease-in-out 4s forwards; /* Fade in and scale effect */
+    line-height: 1.2; /* Adjust line height for better spacing between lines */
+    text-align: center; /* Ensure text is centered */
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.2); /* Slight scaling for dramatic effect */
+    }
+}
+
+.heroic-letter {
+    display: inline-block;
+    opacity: 0; /* Start hidden */
+    animation: fadeLetter 0.5s forwards;
+}
+
+@keyframes fadeLetter {
+    0% {
+        opacity: 0;
+        transform: scale(0.5); /* Start smaller */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); /* Grow to normal size */
+    }
+}
+
+.ready-button {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4caf50;
+    color: white;
+    font-size: 1.5rem;
     padding: 15px 30px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.5em;
-    transition: background 0.3s; /* Smooth transition */
-    z-index: 1; /* Ensure it appears above the video */
-}
-
-.play-button:hover {
-    background-color: rgba(0, 100, 200, 0.8); /* Darker shade on hover */
-}
-
-/* Container Styles */
-.container {
-    position: relative;
-    padding: 20px;
-    z-index: 1; /* Ensure it appears above the video */
-    color: #fff;
-}
-
-/* Title Styles */
-#story-title {
-    font-size: 3em; /* Increase size for main title */
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for depth */
-    opacity: 0; /* Start with the title hidden */
-    transition: opacity 0.5s ease; /* Smooth transition for fading */
-}
-
-.container:hover #story-title {
-    opacity: 1; /* Fade in when hovering over the container */
-}
-
-/* Fade-in Effect for Scenarios */
-.scenarios {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap; /* Wrap scenarios to next line */
-}
-
-.scenario {
-    opacity: 0; /* Start with hidden scenarios */
-    transition: opacity 0.5s ease; /* Smooth transition for fading */
-}
-
-.container:hover .scenario {
-    opacity: 1; /* Fade in only when hovering over the container */
-}
-
-.scenario:hover {
-    opacity: 1; /* Keep the scenario visible when hovered */
-}
-
-.scenario {
-    background-color: rgba(0, 0, 0, 0.7); /* Dark background for scenario cards */
-    padding: 20px;
-    border-radius: 15px; /* Rounded corners for cards */
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transform and shadow on hover */
-    width: 200px; /* Set width for uniformity */
-}
-
-.scenario:hover {
-    transform: scale(1.05); /* Scale up the card on hover */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow on hover */
-}
-
-.scenario-icon {
-    width: 50px; /* Set size for icons */
-    margin-bottom: 10px; /* Space between icon and text */
-}
-
-.hidden {
-    display: none; /* Hidden by default */
-}
-
-#story-content {
-    margin-top: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-}
-
-/* Back button styles */
-#back-button {
-    margin-top: 10px;
-    padding: 10px 15px;
-    font-size: 1.2em;
-    background-color: #f44336; /* Red for visibility */
-    color: white;
+    border-radius: 8px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s; /* Smooth transition */
+    transition: background-color 0.3s ease;
+    opacity: 0; /* Hidden initially */
+    z-index: 1;
+    transition: opacity 0.5s ease-in-out; /* Smooth fade in */
 }
 
-#back-button:hover {
-    background-color: #c62828; /* Darker red on hover */
+.ready-button:hover {
+    background-color: #388e3c;
 }
-.mute-button {
+.sound-icon {
     position: absolute;
-    top: 90%; /* Position the button lower on the screen */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Center the button */
-    background-color: rgba(255, 0, 0, 0.8); /* Semi-transparent background */
-    color: white;
-    padding: 8px 15px; /* Reduced padding for a smaller button */
-    border-radius: 5px;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
     cursor: pointer;
-    font-size: 1em; /* Smaller font size */
-    transition: background 0.3s; /* Smooth transition */
-    z-index: 1; /* Ensure it appears above the video */
+    z-index: 2;
+    color: white;
+    transition: transform 0.3s ease;
 }
 
-.mute-button:hover {
-    background-color: rgba(200, 0, 0, 0.8); /* Darker shade on hover */
+.sound-icon:hover {
+    transform: scale(1.1);
 }
+
+/* For the <audio> element, control styling */
+audio {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 2;
+    width: 300px; /* Adjust the width of the audio controls */
+}
+#word-0 { margin-right: 0px; } /* Step */
+#word-1 { margin-right: 0px; } /* Up, */
+#word-2 { margin-right: 0px; } /* Become */
+#word-3 { margin-right: 80px; } /* Earth's */
+#word-4 { margin-right: 100px; } /* Guardian */
+#word-5 { margin-right: 100px; } /* Against */
+#word-6 { margin-right: 30px; } /* Climate */
+#word-7 { margin-right: 50px; } /* Change! */
