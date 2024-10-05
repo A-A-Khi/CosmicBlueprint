@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"> <!-- New font -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <title>Climate Change Story</title>
+</head>
+<body>
+    <!-- Background Video -->
+    <video id="background-video" class="background-video" loop>
+        <source src="SAVE PLANET _ Global Warming - Climate Change.mp4" type="video/mp4"> <!-- Your video file -->
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Play Button -->
+    <div id="play-button" class="play-button">Play Video</div>
+    <!-- Mute/Unmute Button -->
+    <div id="mute-button" class="mute-button">Mute</div>
+
+    <div class="container">
+        <h1 id="story-title">You Can Be The Difference</h1> <!-- Title that will disappear -->        
+        <div class="scenarios">
+            <div class="scenario" data-scenario="public-transport">
+                <img src="public-transit-7.29.22-scaled.webp" alt="Public Transport Icon" class="scenario-icon"> <!-- Add icon -->
+                <h2>Using Public Transport</h2>
+                <p>Learn how using public transport can reduce emissions.</p>
+            </div>
+            <div class="scenario" data-scenario="meat-consumption">
+                <img src="reduce-meat-consumption-ecofriendly-poster-vector-40881761.jpg" alt="Meat Consumption Icon" class="scenario-icon"> <!-- Add icon -->
+                <h2>Reducing Meat Consumption</h2>
+                <p>Explore the climate benefits of a plant-based diet.</p>
+            </div>
+            <div class="scenario" data-scenario="energy-efficient">
+                <img src="AdobeStock_413551836-scaled.webp" alt="Energy Efficient Icon" class="scenario-icon"> <!-- Add icon -->
+                <h2>Energy-Efficient Appliances</h2>
+                <p>Energy-efficient appliances help reduce electricity usage.</p>
+            </div>
+            <div class="scenario" data-scenario="support-local">
+                <img src="1457995444-origin.jpg" alt="Support Local Produce Icon" class="scenario-icon"> <!-- Add icon -->
+                <h2>Supporting Local Produce</h2>
+                <p>Buying local reduces transportation emissions.</p>
+            </div>
+            <div class="scenario" data-scenario="planting-trees">
+                <img src="Tree-Planting.webp" alt="Planting Trees Icon" class="scenario-icon"> <!-- Add icon -->
+                <h2>Planting Trees</h2>
+                <p>Trees absorb CO₂ and improve air quality.</p>
+            </div>
+            <div class="scenario" data-scenario="renewable-energy">
+                <img src="solar-and-wind.webp" alt="Renewable Energy Icon" class="scenario-icon"> <!-- Add icon -->
+                <h2>Using Renewable Energy</h2>
+                <p>Switching to renewable energy sources cuts down on emissions.</p>
+            </div>
+        </div>
+
+        <div id="story-content" class="hidden">
+            <h2 id="story-title"></h2>
+            <p id="story-description"></p>
+            <button id="back-button">Back</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

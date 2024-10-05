@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box; /* Ensures padding and borders are included in total width/height */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Oswald', sans-serif; /* Apply Oswald font for headers */
+    color: white;
+    text-align: center; /* Center align text */
+}
+
+/* Background Video Styles */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire background */
+    z-index: -1; /* Ensure it is behind other content */
+    filter: brightness(0.6); /* Darken video for better text contrast */
+}
+
+/* Play Button Styles */
+.play-button {
+    position: absolute;
+    top: 80%; /* Position the button lower on the screen */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the button */
+    background-color: rgba(0, 150, 255, 0.8); /* Semi-transparent background */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: background 0.3s; /* Smooth transition */
+    z-index: 1; /* Ensure it appears above the video */
+}
+
+.play-button:hover {
+    background-color: rgba(0, 100, 200, 0.8); /* Darker shade on hover */
+}
+
+/* Container Styles */
+.container {
+    position: relative;
+    padding: 20px;
+    z-index: 1; /* Ensure it appears above the video */
+    color: #fff;
+}
+
+/* Title Styles */
+#story-title {
+    font-size: 3em; /* Increase size for main title */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for depth */
+    opacity: 0; /* Start with the title hidden */
+    transition: opacity 0.5s ease; /* Smooth transition for fading */
+}
+
+.container:hover #story-title {
+    opacity: 1; /* Fade in when hovering over the container */
+}
+
+/* Fade-in Effect for Scenarios */
+.scenarios {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Wrap scenarios to next line */
+}
+
+.scenario {
+    opacity: 0; /* Start with hidden scenarios */
+    transition: opacity 0.5s ease; /* Smooth transition for fading */
+}
+
+.container:hover .scenario {
+    opacity: 1; /* Fade in only when hovering over the container */
+}
+
+.scenario:hover {
+    opacity: 1; /* Keep the scenario visible when hovered */
+}
+
+.scenario {
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background for scenario cards */
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners for cards */
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transform and shadow on hover */
+    width: 200px; /* Set width for uniformity */
+}
+
+.scenario:hover {
+    transform: scale(1.05); /* Scale up the card on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow on hover */
+}
+
+.scenario-icon {
+    width: 50px; /* Set size for icons */
+    margin-bottom: 10px; /* Space between icon and text */
+}
+
+.hidden {
+    display: none; /* Hidden by default */
+}
+
+#story-content {
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Back button styles */
+#back-button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 1.2em;
+    background-color: #f44336; /* Red for visibility */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s; /* Smooth transition */
+}
+
+#back-button:hover {
+    background-color: #c62828; /* Darker red on hover */
+}
+.mute-button {
+    position: absolute;
+    top: 90%; /* Position the button lower on the screen */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the button */
+    background-color: rgba(255, 0, 0, 0.8); /* Semi-transparent background */
+    color: white;
+    padding: 8px 15px; /* Reduced padding for a smaller button */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em; /* Smaller font size */
+    transition: background 0.3s; /* Smooth transition */
+    z-index: 1; /* Ensure it appears above the video */
+}
+
+.mute-button:hover {
+    background-color: rgba(200, 0, 0, 0.8); /* Darker shade on hover */
+}
