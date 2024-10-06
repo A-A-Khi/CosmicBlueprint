@@ -116,17 +116,37 @@ body {
     background-color: #fff;
 }
 
+/* Container for the scenarios */
 .scenarios {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    flex-wrap: wrap; /* Wrap to the next line when necessary */
+    gap: 20px; /* Add some spacing between the cards */
+    padding: 20px;
 }
-/* Scenario Icons */
+
+/* Each individual scenario */
+.scenario {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 200px; /* Adjust card width if necessary */
+    max-width: 200px;
+    text-align: center; /* Center-align the content */
+    transition: transform 0.3s;
+}
+
+/* Scenario Icon */
 .scenario-icon {
-    width: 70px;  /* Set a reasonable default width */
+    width: 100px;  /* Adjusted size */
     height: auto;  /* Maintain aspect ratio */
     margin-bottom: 10px;
-    transition: transform 0.3s;  /* Smooth animation */
+}
+
+/* Add hover effect for scaling the cards */
+.scenario:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 @media (max-width: 768px) {
