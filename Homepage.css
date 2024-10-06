@@ -1,196 +1,220 @@
 * {
-    box-sizing: border-box; /* Ensures padding and borders are included in total width/height */
+    box-sizing: border-box;
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Oswald', sans-serif; /* Apply Oswald font for headers */
-    color: white;
-    text-align: center; /* Center align text */
+    font-family: 'Oswald', sans-serif;
+    background-color: #fff; /* Background for sections other than the video */
+    color: #333;
 }
 
-@media (max-width: 768px) {
-    /* Styles for mobile devices */
-    body {
-        font-size: 14px; /* Adjust font size */
-    }
-    #story-title {
-        font-size: 2.5em; /* Decrease title size on mobile */
-    }
-    .scenario {
-        font-size: 0.9em; /* Adjust scenario text size */
-        width: 90%; /* Make scenario cards responsive */
-        max-width: 200px; /* Limit maximum width */
-    }
-}
-
-/* Loading Screen Styles */
-.loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
-    color: #ffffff; /* White text for visibility */
-    font-size: 2em;
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column; /* Stack text and image vertically */
-    z-index: 2; /* Ensure it's above other elements */
+    overflow: hidden;
 }
 
-.loading-text {
-    margin-bottom: 10px; /* Space between text and globe */
-    color: #ffffff; /* Ensure loading text is white */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
 }
 
-.loading-globe {
-    width: 50px; /* Set size for the globe */
-    animation: spin 2s linear infinite; /* Spin animation */
+.hero-content h1 {
+    font-size: 3em;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-/* Background Video Styles */
-.background-video {
-    position: fixed;
+.hero-content p {
+    font-size: 1.5em;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.hero-section:hover .hero-content h1,
+.hero-section:hover .hero-content p {
+    opacity: 1;
+}
+
+.hero-overlay {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the entire background */
-    z-index: -1; /* Ensure it is behind other content */
-    filter: brightness(0.6); /* Darken video for better text contrast */
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1;
 }
 
-/* Play Button Styles */
-.play-button {
+/* Background Video */
+.background-video {
     position: absolute;
-    top: 80%; /* Position the button lower on the screen */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%);
-    background-color: #4caf50; /* Matching the logo's green */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Button Styles */
+.cta-button {
+    background-color: #28a745;
     color: white;
     padding: 15px 30px;
-    border-radius: 8px; /* Rounded corners for a modern look */
-    cursor: pointer;
-    font-size: 1.5em;
-    font-family: 'Oswald', sans-serif; /* Matching logo font */
-    transition: background 0.3s, box-shadow 0.3s; /* Smooth hover effects */
-    box-shadow: inset 0 0 10px rgba(76, 175, 80, 0.6); /* Inset shadow, does not affect button size */
-}
-
-.play-button:hover {
-    background-color: #388e3c; /* Darker shade of green on hover */
-    box-shadow: inset 0 0 15px rgba(76, 175, 80, 1); /* Inset shadow on hover */
-}
-
-/* Container Styles */
-.container {
-    position: relative;
-    padding: 20px;
-    z-index: 1; /* Ensure it appears above the video */
-    color: #fff;
-}
-
-/* Title Styles */
-#story-title {
-    font-size: 3em; /* Increase size for main title */
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for depth */
-    opacity: 0; /* Start with the title hidden */
-    transition: opacity 0.5s ease; /* Smooth transition for fading */
-}
-
-.container:hover #story-title {
-    opacity: 1; /* Fade in when hovering over the container */
-}
-
-/* Fade-in Effect for Scenarios */
-.scenarios {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; /* Wrap scenarios to next line */
-    gap: 10px; /* Reduced gap for mobile */
-}
-
-.scenario {
-    opacity: 0; /* Start with hidden scenarios */
-    transition: opacity 0.5s ease; /* Smooth transition for fading */
-    background-color: rgba(0, 0, 0, 0.7); /* Dark background for scenario cards */
-    padding: 20px;
-    border-radius: 15px; /* Rounded corners for cards */
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transform and shadow on hover */
-    width: 90%; /* Make scenario cards responsive */
-    max-width: 200px; /* Limit maximum width */
-}
-
-.container:hover .scenario {
-    opacity: 1; /* Fade in only when hovering over the container */
-}
-
-.scenario:hover {
-    transform: scale(1.05); /* Scale up the card on hover */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow on hover */
-}
-
-.scenario-icon {
-    width: 50px; /* Set size for icons */
-    margin-bottom: 10px; /* Space between icon and text */
-}
-
-.hidden {
-    display: none; /* Hidden by default */
-}
-
-#story-content {
-    margin-top: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-}
-
-/* Back button styles */
-#back-button {
-    margin-top: 10px;
-    padding: 10px 15px;
     font-size: 1.2em;
-    background-color: #f44336; /* Red for visibility */
-    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s; /* Smooth transition */
+    transition: background-color 0.3s;
+    margin-top: 20px;
 }
 
-#back-button:hover {
-    background-color: #c62828; /* Darker red on hover */
+.cta-button:hover {
+    background-color: #218838;
 }
 
-/* Mute Button Styles */
+/* Mute Button */
 .mute-button {
     position: absolute;
-    top: 90%; /* Position the button lower on the screen */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Center the button */
-    background-color: rgba(255, 0, 0, 0.8); /* Semi-transparent background */
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    z-index: 10;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+    width: 100%;
+    height: 5px;
+    background-color: #f0f0f0;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #28a745;
+    width: 0;
+}
+
+/* Section Styles */
+.stats-section, .hero-actions, .globe-section, .donation-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.scenarios {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+/* Scenario Icons */
+.scenario-icon {
+    width: 50px;  /* Set a reasonable default width */
+    height: auto;  /* Maintain aspect ratio */
+    margin-bottom: 10px;
+    transition: transform 0.3s;  /* Smooth animation */
+}
+
+@media (max-width: 768px) {
+    .scenario-icon {
+        width: 30px;  /* Smaller icons for mobile devices */
+    }
+}
+
+
+.scenario {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.scenario:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.globe-button, .donate-button {
+    background-color: #007bff;
     color: white;
-    padding: 8px 15px; /* Reduced padding for a smaller button */
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1em; /* Smaller font size */
-    transition: background 0.3s; /* Smooth transition */
-    z-index: 1; /* Ensure it appears above the video */
 }
 
-.mute-button:hover {
-    background-color: rgba(200, 0, 0, 0.8); /* Darker shade on hover */
+.globe-button:hover, .donate-button:hover {
+    background-color: #0056b3;
 }
 
-/* Globe Spinning Animation */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+/* Logo and Mission Container */
+.logo-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
 }
+
+.team-logo {
+    width: 100px; /* Adjust size of the logo */
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.team-logo:hover {
+    transform: scale(1.1); /* Slight zoom-in effect on hover */
+}
+
+.mission-box {
+    position: absolute;
+    bottom: 0;
+    left: 100px; /* Position next to the logo */
+    background-color: rgba(0, 0, 0, 0.8); /* Transparent dark background */
+    color: white;
+    width: 300px; /* Width of the mission box */
+    padding: 20px;
+    border-radius: 10px;
+    transform: scale(0);
+    transform-origin: left bottom;
+    transition: transform 0.5s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.logo-container:hover .mission-box {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Add some creative typography to the mission */
+.mission-box h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #4caf50; /* Green accent to match the theme */
+    font-family: 'Oswald', sans-serif;
+}
+
+.mission-box p {
+    font-size: 1em;
+    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif;
+}
+
