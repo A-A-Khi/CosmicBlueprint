@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,69 +9,98 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
-    <title>Climate Change Story</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Become Earth's Captain Climate</title>
 </head>
+
 <body>
-   <!-- Loading Screen -->
-   <div id="loading" class="loading">
-       <span class="loading-text">Story is being prepared...</span>
-       <img src="Rotating_earth_animated_transparent.gif" class="loading-globe">
-   </div>
 
-   <!-- Background Video -->
-   <video id="background-video" class="background-video" loop>
-       <source src="https://raw.githubusercontent.com/A-A-Khi/CosmicBlueprint/master/SAVE_PLANET_Global_Warming_Climate_Change.mp4" type="video/mp4">
-       Your browser does not support the video tag.
-   </video>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 id="main-title" class="hover-text">You Can Become Earth's Next Captain Climate</h1>
+            <p class="hover-text">Take the journey, make the impact – without superpowers, but with action.</p>
+            <button id="explore-journey" class="cta-button">Start Your Hero Journey</button>
+        </div>
+        <div class="hero-overlay"></div>
 
-   <!-- Play Button -->
-   <div id="play-button" class="play-button">Explore the Story Ahead!</div>
-   <!-- Mute/Unmute Button -->
-   <div id="mute-button" class="mute-button">Mute</div>
+        <!-- Background Video -->
+        <video id="background-video" class="background-video" autoplay loop muted playsinline controls>
+            <source src="./SAVE_PLANET_Global_Warming_Climate_Change.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
 
-   <div class="container">
-       <h1 id="story-title">You Can Be The Difference</h1>        
-       <div class="scenarios">
-           <div class="scenario" data-scenario="public-transport">
-               <img src="public-transit-7.29.22-scaled.webp" alt="Icon representing public transportation benefits" class="scenario-icon">
-               <h2>Using Public Transport</h2>
-               <p>Learn how using public transport can reduce emissions.</p>
-           </div>
-           <div class="scenario" data-scenario="meat-consumption">
-               <img src="reduce-meat-consumption-ecofriendly-poster-vector-40881761.jpg" alt="Icon representing reducing meat consumption" class="scenario-icon">
-               <h2>Reducing Meat Consumption</h2>
-               <p>Explore the climate benefits of a plant-based diet.</p>
-           </div>
-           <div class="scenario" data-scenario="energy-efficient">
-               <img src="AdobeStock_413551836-scaled.webp" alt="Icon representing energy-efficient appliances" class="scenario-icon">
-               <h2>Energy-Efficient Appliances</h2>
-               <p>Energy-efficient appliances help reduce electricity usage.</p>
-           </div>
-           <div class="scenario" data-scenario="support-local">
-               <img src="1457995444-origin.jpg" alt="Icon representing supporting local produce" class="scenario-icon">
-               <h2>Supporting Local Produce</h2>
-               <p>Buying local reduces transportation emissions.</p>
-           </div>
-           <div class="scenario" data-scenario="planting-trees">
-               <img src="Tree-Planting.webp" alt="Icon representing planting trees" class="scenario-icon">
-               <h2>Planting Trees</h2>
-               <p>Trees absorb CO₂ and improve air quality.</p>
-           </div>
-           <div class="scenario" data-scenario="renewable-energy">
-               <img src="solar-and-wind.webp" alt="Icon representing renewable energy" class="scenario-icon">
-               <h2>Using Renewable Energy</h2>
-               <p>Switching to renewable energy sources cuts down on emissions.</p>
-           </div>
-       </div>
+        <button id="mute-button" class="mute-button">🔇</button> <!-- Mute/Unmute button -->
+    </section>
 
-       <div id="story-content" class="hidden">
-           <h2 id="story-title"></h2>
-           <p id="story-description"></p>
-           <button id="back-button">Back</button>
-       </div>
-   </div>
+    <!-- Progress Bar -->
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
 
-   <script src="Homepage.js"></script>
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="content-wrapper">
+            <h2>Climate Change Impact</h2>
+            <div class="chart-container">
+                <canvas id="co2Chart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Actions Section -->
+    <section class="hero-actions">
+        <div class="content-wrapper">
+            <h2>Take Action to Become a Hero</h2>
+            <p class="action-text">See how your everyday actions can make a big difference.</p>
+            <div class="scenarios">
+                <div class="scenario" data-scenario="public-transport">
+                    <img src="public-transit-7.29.22-scaled.webp" alt="Public Transport" class="scenario-icon">
+                    <h2>Use Public Transport</h2>
+                    <p>Reduce emissions by using public transport instead of cars.</p>
+                </div>
+                <div class="scenario" data-scenario="meat-consumption">
+                    <img src="reduce-meat-consumption-ecofriendly-poster-vector-40881761.jpg" alt="Meat Reduction" class="scenario-icon">
+                    <h2>Reduce Meat Consumption</h2>
+                    <p>Shift to plant-based diets to lower your carbon footprint.</p>
+                </div>
+                <div class="scenario" data-scenario="renewable-energy">
+                    <img src="solar-and-wind.webp" alt="Renewable Energy" class="scenario-icon">
+                    <h2>Switch to Renewable Energy</h2>
+                    <p>Using renewable energy helps fight climate change.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Globe Section -->
+    <section class="globe-section">
+        <div class="content-wrapper">
+            <h2>Explore the 3D Globe</h2>
+            <p>See the impact of climate change in a visualized 3D experience.</p>
+            <a href="globe.html" class="globe-button">Explore 3D Globe</a>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+<section class="donation-section">
+    <div class="content-wrapper">
+        <h2>Join the Climate Heroes</h2>
+        <p>Your donation helps fight climate change and makes you a hero for Earth.</p>
+        <a href="https://donate.catf.us/page/51530/donate/1?ea.tracking.id=catf_main_donate&_gl=1*lmi43o*_ga*R0ExLjEuR0ExLjEuMTUzOTIxNzM2Ni4xNzI4MjAwMDI0*_ga_88025VJ2M0*MTcyODIwMDAyMy4xLjAuMTcyODIwMDAzNy4wLjAuNjQ1NTQ3OTEz*_fplc*MiUyRkVPTGNTSWJiM1kwZDgxbW5xdTZmWGlHMUpKR1UlMkYzVDdEUlZTdXUzN2hnc2tOcVg0SXAySzlEU1pBN2hXWk9QWmFyJTJCckZQQ01EYjVxRUJjTkt4Y2hkV1ZPT3VIOENoWUhkNXVwQkV1WGREMlY0YXVqY1lKR3I3V0U2ZFRBJTNEJTNE*_gcl_au*OTYyOTI2OTkxLjE3MjgyMDAwMjQ."
+           class="donate-button" target="_blank">Donate Now</a>
+    </div>
+</section>
+<!-- Logo and Mission Section -->
+<div class="logo-container">
+    <img src="cosmic-blueprint-high-resolution-logo-transparent.png" alt="Cosmic Blueprint Logo" class="team-logo">
+    <div class="mission-box">
+        <h2>Our Mission</h2>
+        <p>Cosmic Vision, Green Mission: Leading the way to a sustainable future by blending space exploration with climate solutions. Together, we are shaping a greener tomorrow.</p>
+    </div>
+</div>
+
+    <script src="Homepage.js"></script>
 </body>
+
 </html>
-"" 
