@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Slideshow with Background Video</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      color: white;
+    }
+
+    /* Video background */
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1; /* Behind everything else */
+      object-fit: cover; /* Ensures the video covers the entire screen */
+    }
+
+    /* Back button */
+    .back-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 5px;
+      z-index: 2; /* Above everything */
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: rgba(0, 0, 0, 1);
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+      position: relative;
+      max-width: 800px;
+      width: 100%;
+      margin: auto;
+      z-index: 1; /* Above the video */
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: auto;
+      position: relative;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      z-index: 3;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .dots {
+      text-align: center;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    .dots span {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active, .dots span:hover {
+      background-color: #717171;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop>
+    <source src="11.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Back button -->
+  <a href="index.html" class="back-button">← Back</a>
+
+  <!-- Slideshow container -->
+  <div class="slideshow-container">
+
+    <!-- Slide 1 -->
+    <div class="slide">
+      <img src="1.jpg" alt="Image 1">
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <img src="2.jpg" alt="Image 2">
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <img src="3.jpg" alt="Image 3">
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+      <img src="4.jpg" alt="Image 4">
+    </div>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  </div>
+
+  <!-- The dots/circles -->
+  <div class="dots">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+  </div>
+
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("slide");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+    }
+
+    // Auto slide
+    setInterval(() => {
+      plusSlides(1);
+    }, 3000); // Change slide every 3 seconds
+  </script>
+
+</body>
+</html>
