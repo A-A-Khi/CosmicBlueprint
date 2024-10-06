@@ -193,7 +193,7 @@ body {
 }
 
 .team-logo {
-    width: 100px; /* Adjust size of the logo */
+    width: 200px; /* Adjust size of the logo */
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
 }
